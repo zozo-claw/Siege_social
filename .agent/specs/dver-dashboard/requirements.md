@@ -12,7 +12,7 @@ Ce document définit les spécifications du Dashboard Manager de Dver, l'interfa
 
 #### Acceptance Criteria
 
-1. **Onglet Organigramme** : WHEN l'utilisateur ouvre l'onglet THE system SHALL afficher un arbre visuel cliquable incluant Marius (CEO), Zozo (DGD), Léo (DevOps) et Nora (Fullstack).
+1. **Onglet Organigramme** : WHEN l'utilisateur ouvre l'onglet THE system SHALL afficher un arbre visuel cliquable (React Flow) incluant Marius (CEO), Zozo (DGD), Léo (DevOps) et Nora (Fullstack).
 2. **Statut Temps Réel** : THE system SHALL indiquer visuellement si chaque agent est "Actif" ou "Idle".
 3. **Onglet Agent** : WHEN un utilisateur clique sur un agent THE system SHALL afficher une fiche détaillée contenant : sa mission, ses fichiers de travail, ses dernières actions et un accès à sa mémoire.
 
@@ -24,8 +24,8 @@ Ce document définit les spécifications du Dashboard Manager de Dver, l'interfa
 
 #### Acceptance Criteria
 
-1. **Onglet Timeline** : THE system SHALL afficher la roadmap des projets classée par direction (DSI, Sales, Produit, Marketing).
-2. **Onglet Conversations** : THE system SHALL centraliser et afficher les logs des échanges inter-agents pour une traçabilité complète.
+1. **Onglet Timeline** : THE system SHALL afficher la roadmap des projets, synchronisée avec les GitHub Projects du dépôt "Siege_social".
+2. **Onglet Conversations** : THE system SHALL centraliser et afficher les logs des échanges inter-agents récupérés via l'API OpenClaw.
 
 ---
 
@@ -36,28 +36,27 @@ Ce document définit les spécifications du Dashboard Manager de Dver, l'interfa
 #### Acceptance Criteria
 
 1. **Onglet Coûts API** : THE system SHALL afficher un dashboard de consommation (tokens et euros) par agent et par semaine.
-2. **Onglet Demandes** : WHEN un agent demande un nouveau skill ou un accès API THE system SHALL placer la demande dans une file d'approbation.
-3. **Validation/Rejet** : THE system SHALL permettre à Zozo de valider ou rejeter chaque demande avec une notification immédiate à l'agent concerné.
+2. **Alerte Budgétaire** : IF les coûts hebdomadaires dépassent 20 $ THEN THE system SHALL envoyer une notification critique à Zozo et Marius.
+3. **Onglet Demandes** : WHEN un agent demande un nouveau skill ou un accès API THE system SHALL placer la demande dans une file d'approbation cliquable.
 
 ---
 
-### Requirement 4: Structure de l'Organisation (Initialisation)
+### Requirement 4: Accessibilité, Production et Sécurité
 
-**User Story:** En tant qu'administrateur, je veux que la structure organisationnelle soit définie selon le plan Dver, afin de refléter la hiérarchie réelle.
+**User Story:** En tant que Fondateur, je veux accéder au Dashboard en production via le web de manière sécurisée, afin de piloter Dver de n'importe où.
 
 #### Acceptance Criteria
 
-1. THE system SHALL intégrer la structure suivante : CEO -> DGD -> DSI (Léo, Nora).
-2. THE system SHALL prévoir des emplacements vides (placeholders) pour les directions "Sales & Growth", "Produit/UX" et "Marketing" à créer.
+1. **Déploiement Web** : THE system SHALL être accessible via un nom de domaine sécurisé (HTTPS).
+2. **Authentification Forte** : WHEN un utilisateur accède au Dashboard THE system SHALL exiger une authentification sécurisée (ex: OAuth2 / GitHub Auth).
+3. **Sécurité Infrastructure** : IF un accès non autorisé est détecté THEN THE system SHALL bloquer l'IP et notifier les administrateurs (Léo).
 
 ## Out of Scope
 
 - Recrutement automatisé d'agents externes.
-- Gestion comptable avancée au-delà des coûts API.
-- Modification directe du code source des agents via le Dashboard (réservé à Léo/Nora).
+- Modification directe du code source des agents via le Dashboard (réservé aux Pull Requests via Nora/Léo).
 
 ## Open Questions
 
-- [ ] Quel outil de visualisation pour l'organigramme (React Flow, D3.js) ?
-- [ ] La timeline doit-elle être synchronisée avec un outil externe (GitHub Projects, Linear) ?
-- [ ] Quel est le seuil d'alerte pour les coûts API hebdomadaires ?
+- [ ] L'authentification GitHub est-elle privilégiée pour Marius et Zozo ?
+- [ ] Quelle plateforme de hosting pour la production (Vercel, AWS, VPS Dver) ?
