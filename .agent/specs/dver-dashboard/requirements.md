@@ -43,13 +43,14 @@ Ce document définit les spécifications du Dashboard Manager de Dver, l'interfa
 
 ### Requirement 4: Accessibilité, Production et Sécurité
 
-**User Story:** En tant que Fondateur, je veux accéder au Dashboard en production via le web de manière sécurisée, afin de piloter Dver de n'importe où.
+**User Story:** En tant que Fondateur, je veux accéder au Dashboard en production via le web de manière sécurisée sur notre propre infrastructure, afin de piloter Dver de n'importe où tout en gardant le contrôle total des données.
 
 #### Acceptance Criteria
 
-1. **Déploiement Web** : THE system SHALL être accessible via un nom de domaine sécurisé (HTTPS).
-2. **Authentification Forte** : WHEN un utilisateur accède au Dashboard THE system SHALL exiger une authentification sécurisée (ex: OAuth2 / GitHub Auth).
-3. **Sécurité Infrastructure** : IF un accès non autorisé est détecté THEN THE system SHALL bloquer l'IP et notifier les administrateurs (Léo).
+1. **Déploiement Docker** : THE system SHALL être hébergé sur notre propre instance via une image Docker.
+2. **Authentification Forte GitHub** : WHEN un utilisateur accède au Dashboard THE system SHALL exiger une authentification GitHub OAuth.
+3. **Restriction d'Accès Exclusive** : UNLESS l'utilisateur est authentifié avec le compte GitHub `zozo-claw` (compte dont Léo possède le token), THEN l'accès SHALL être refusé.
+4. **Sécurité Infrastructure** : IF un accès non autorisé est détecté THEN THE system SHALL bloquer l'IP et notifier les administrateurs (Léo).
 
 ## Out of Scope
 
@@ -58,5 +59,5 @@ Ce document définit les spécifications du Dashboard Manager de Dver, l'interfa
 
 ## Open Questions
 
-- [ ] L'authentification GitHub est-elle privilégiée pour Marius et Zozo ?
-- [ ] Quelle plateforme de hosting pour la production (Vercel, AWS, VPS Dver) ?
+- [ ] Quel est l'URL/le domaine définitif pour l'accès à l'instance propre ?
+- [ ] Devons-nous utiliser un reverse proxy spécifique pour gérer le SSL/HTTPS devant le conteneur Docker ?
