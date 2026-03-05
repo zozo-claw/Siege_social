@@ -25,16 +25,46 @@ Ce document définit les tâches d'implémentation pour l'infrastructure de dép
    - Activer les flags `cookie-secure` et `cookie-httponly`
    - *Référence : Requirement 4.4, Design Data Models*
 
-## Phase 2 : Validation & Tests
+## Phase 2 : Développement App & Supervision (Req 1 & 2)
 
-5. [ ] Création d'un script de test de connectivité
-   - Vérifier que l'accès direct à l'application `dashboard-app` est impossible depuis l'extérieur
-   - Vérifier la redirection vers GitHub OAuth lors de l'accès via le proxy
-   - *Référence : Design Testing Strategy*
+5. [ ] Implémenter l'arbre d'organigramme (React Flow)
+   - Créer l'endpoint API `/api/organigramme` renvoyant la structure Marius/Zozo/Léo/Nora
+   - Connecter l'état (Actif/Idle) via le status OpenClaw
+   - *Référence : Req 1.1, Req 1.2*
 
-6. [ ] Documentation du déploiement
-   - Rédiger un `README.md` dans le dossier de déploiement expliquant comment lancer l'instance et injecter les secrets
-   - *Référence : Requirement 2*
+6. [ ] Développer la fiche de détail agent
+   - Afficher la mission, les fichiers de travail et l'accès à la mémoire agent
+   - *Référence : Req 1.3*
+
+7. [ ] Intégrer la Timeline et les Logs projet
+   - Connecter le Dashboard au GitHub Project de `Siege_social`
+   - Centraliser les logs des conversations via OpenClaw
+   - *Référence : Req 2.1, Req 2.2*
+
+## Phase 3 : Monitoring Coûts & Approbations (Req 3)
+
+8. [ ] Créer le Dashboard de consommation API
+   - Calculer les coûts (tokens/euros) par agent et par semaine
+   - *Référence : Req 3.1*
+
+9. [ ] Implémenter l'alerte budgétaire ($20/semaine)
+   - Déclencher une notification critique à Zozo/Marius en cas de dépassement
+   - *Référence : Req 3.2*
+
+10. [ ] Mettre en place la file d'approbation cliquable
+    - Interface d'approbation/rejet pour les nouveaux skills ou accès API
+    - *Référence : Req 3.3*
+
+## Phase 4 : Validation & Tests
+
+11. [ ] Création d'un script de test de connectivité
+    - Vérifier que l'accès direct à l'application `dashboard-app` est impossible depuis l'extérieur
+    - Vérifier la redirection vers GitHub OAuth lors de l'accès via le proxy
+    - *Référence : Design Testing Strategy*
+
+12. [ ] Documentation du déploiement
+    - Rédiger un `README.md` dans le dossier de déploiement expliquant comment lancer l'instance et injecter les secrets
+    - *Référence : Requirement 4*
 
 ## Questions Ouvertes
 - Léo, as-tu déjà un Client ID / Secret GitHub généré pour `zozo-claw` ou dois-je inclure une tâche pour leur création ?

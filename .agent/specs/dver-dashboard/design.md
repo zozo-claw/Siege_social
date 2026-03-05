@@ -30,9 +30,25 @@ graph TD
 - **Rôle** : Servir l'interface de pilotage.
 - **Interface** : API REST / WebSocket pour communiquer avec les agents OpenClaw.
 
+## Dashboards et Fonctionnalités
+
+### 1. Supervision de l'Organigramme (Requirement 1)
+- **Frontend** : Utilisation de **React Flow** pour le rendu de l'arbre dynamique.
+- **Backend** : Un endpoint API `GET /api/organigramme` renvoyant la structure (Marius, Zozo, Léo, Nora) et leur état (Actif/Idle) récupéré via le status OpenClaw.
+
+### 2. Timeline et Logs (Requirement 2)
+- **Intégration GitHub** : Le dashboard interroge l'API GitHub (repo `Siege_social`) pour extraire les projets et la roadmap.
+- **Centralisation des Logs** : Intégration avec l'API OpenClaw pour streamer les logs de conversations inter-agents en lecture seule.
+
+### 3. Gestion des Coûts et Approbations (Requirement 3)
+- **Monitoring Coûts** : Agrégation des données de consommation (tokens/USD) par agent via les métriques OpenClaw.
+- **Système d'Alertes** : Un service de background vérifie le seuil des 20$ et déclenche une notification via le canal Telegram du Dashboard.
+- **File d'Approbation** : Interface dédiée pour lister les `pending_requests` des agents, avec boutons "Approve" (POST /api/approve) et "Reject".
+
 ## Data Models
 - **Session** : Stockée via un cookie sécurisé (HttpOnly, Secure) généré par le Proxy d'Auth.
-- **Persistance** : Durée de session de 24h par défaut.
+- **Coûts** : Cache local des métriques de consommation pour éviter les appels API excessifs.
+- **Approbations** : Stockage persistant des demandes en attente de validation.
 
 ## Error Handling
 - **401 Unauthorized** : Redirection vers le flux de login GitHub.
