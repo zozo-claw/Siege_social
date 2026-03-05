@@ -1,0 +1,47 @@
+version: "3.9"
+
+networks:
+  internal:
+    driver: bridge
+
+services:
+  dashboard-app:
+    build:
+      context: /home/ubuntu/.openclaw/workspace/agents/nora/dver-dashboard
+      dockerfile: Dockerfile
+    container_name: dver-dashboard-app
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - internal
+    restart: unless-stopped
+
+  auth-proxy:
+    image: quay.io/oauth2-proxy/oauth2-proxy:v7.6.0
+    container_name: dver-auth-proxy
+    ports:
+      - "4180:4180"
+    environment:
+      OAUTH2_PROXY_PROVIDER: github
+      OAUTH2_PROXY_CLIENT_ID: "${OAUTH2_PROXY_CLIENT_ID}"
+      OAUTH2_PROXY_CLIENT_SECRET: "${OAUTH2_PROXY_CLIENT_SECRET}"
+      OAUTH2_PROXY_COOKIE_SECRET: "${OAUTH2_PROXY_COOKIE_SECRET}"
+      OAUTH2_PROXY_GITHUB_USERS: "zozo-claw"
+      OAUTH2_PROXY_EMAIL_DOMAINS: "*"
+      OAUTH2_PROXY_UPSTREAMS: "http://dashboard-app:3000"
+      OAUTH2_PROXY_HTTP_ADDRESS: "0.0.0.0:4180"
+      OAUTH2_PROXY_COOKIE_SECURE: "true"
+      OAUTH2_PROXY_COOKIE_EXPIRE: "24h"
+      OAUTH2_PROXY_COOKIE_HTTPONLY: "true"
+      OAUTH2_PROXY_REDIRECT_URL: "${OAUTH2_PROXY_REDIRECT_URL}"
+      OAUTH2_PROXY_SCOPE: "user:email read:user read:org"
+      OAUTH2_PROXY_PASS_USER_HEADERS: "true"
+      OAUTH2_PROXY_SET_XAUTHREQUEST: "true"
+      OAUTH2_PROXY_SKIP_AUTH_ROUTES: "^/_next/static/,^/_next/image,^/favicon.ico"
+    networks:
+      - internal
+    depends_on:
+      - dashboard-app
+    restart: unless-stopped

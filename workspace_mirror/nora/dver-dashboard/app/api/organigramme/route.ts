@@ -1,0 +1,48 @@
+import { NextResponse } from 'next/server';
+
+export async function GET() {
+  const agents = [
+    {
+      id: 'marius',
+      name: 'Marius',
+      role: 'CEO',
+      status: 'Actif',
+      mission: 'Vision stratégique et direction générale du projet Dver.',
+      files: ['STRATEGY.md', 'VALUES.md', 'INVESTORS.md'],
+      recentActions: ['Validé le budget Q2', 'Review de la roadmap mobile'],
+      memoryLink: '/memory/marius'
+    },
+    {
+      id: 'zozo',
+      name: 'Zozo',
+      role: 'DGD',
+      status: 'Actif',
+      mission: 'Direction opérationnelle, arbitrage produit et coordination inter-agents.',
+      files: ['ORCHESTRATION.md', 'REQUIREMENTS.md'],
+      recentActions: ['Arbitrage sur la stack technique', 'Coordination Nora/Léo'],
+      memoryLink: '/memory/zozo'
+    },
+    {
+      id: 'leo',
+      name: 'Léo',
+      role: 'DevOps',
+      status: 'Idle',
+      mission: 'Infrastructure, CI/CD, sécurité et gestion des déploiements.',
+      files: ['INFRA.md', 'DOCKER.md', 'K8S.yaml'],
+      recentActions: ['Mis à jour le cluster Kubernetes', 'Configuration du monitoring'],
+      memoryLink: '/memory/leo'
+    },
+    {
+      id: 'nora',
+      name: 'Nora',
+      role: 'Fullstack',
+      status: 'Actif',
+      mission: 'Développement de l\'application terrain et du dashboard manager.',
+      files: ['AGENTS.md', 'SOUL.md', 'DASHBOARD.tsx'],
+      recentActions: ['Build du dashboard', 'Implémentation de React Flow'],
+      memoryLink: '/memory/nora'
+    }
+  ];
+
+  return NextResponse.json({ agents });
+}

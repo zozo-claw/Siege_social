@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/health/route": "app/api/health/route.js",
+  "/api/organigramme/route": "app/api/organigramme/route.js",
+  "/conversations/page": "app/conversations/page.js",
+  "/couts/page": "app/couts/page.js",
+  "/organigramme/page": "app/organigramme/page.js",
+  "/demandes/page": "app/demandes/page.js",
+  "/page": "app/page.js",
+  "/timeline/page": "app/timeline/page.js"
+}

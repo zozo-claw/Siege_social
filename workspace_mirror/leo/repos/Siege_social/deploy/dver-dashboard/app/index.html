@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dver Dashboard — DSI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .logo { font-size: 3rem; margin-bottom: 1rem; }
+        h1 { font-size: 2rem; color: #58a6ff; margin-bottom: 0.5rem; }
+        .subtitle { color: #8b949e; margin-bottom: 2rem; }
+        .badge {
+            background: #1f6feb;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .status {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .agent { display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #3fb950; }
+        .dot.idle { background: #8b949e; }
+    </style>
+</head>
+<body>
+    <div class="logo">⚙️</div>
+    <h1>Dver Dashboard</h1>
+    <p class="subtitle">Interface de pilotage — DSI Dver</p>
+    <span class="badge">🔒 Authentifié · zozo-claw</span>
+    <div class="status">
+        <p style="margin-bottom:1rem; color:#8b949e;">Interface en cours de développement par Nora</p>
+        <div class="agent"><div class="dot"></div> Marius (CEO)</div>
+        <div class="agent"><div class="dot"></div> Zozo (DGD)</div>
+        <div class="agent"><div class="dot"></div> Léo (DevOps)</div>
+        <div class="agent"><div class="dot"></div> Nora (Fullstack)</div>
+    </div>
+</body>
+</html>
